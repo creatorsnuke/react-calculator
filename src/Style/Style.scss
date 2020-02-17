@@ -1,0 +1,130 @@
+$mainColor: #c0c0c0;
+$secondColor: #000;
+
+%boxshadow {
+  box-shadow: 
+    14px 14px 28px #a3a3a3, 
+    -14px -14px 28px #dddddd;
+  transition: box-shadow 650ms ease-in-out;
+}
+
+%hoverboxshadow {
+  box-shadow: 
+    inset 14px 14px 28px #a3a3a3, 
+    inset -14px -14px 28px #dddddd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: $mainColor;
+  font-family: 'Lato', sans-serif;
+}
+
+.calculator {
+  background-size: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 320px;
+  height: 520px;
+  border-radius: 5px;
+  background-color: $mainColor;
+  @extend %boxshadow;
+}
+
+.result {
+  height: 120px;
+  border-radius: 5px;
+  margin: auto;
+  background-color: $mainColor;
+  color: $secondColor;
+  @extend %hoverboxshadow;
+}
+
+.history {
+  text-align: right;
+  height: 50px;
+  margin: 0 20px;
+  padding-top: 30px;
+  font-size: 1.5rem;
+}
+
+.output {
+  text-align: right;
+  height: 20px;
+  margin: 20px 20px;
+  font-size: 2rem;
+}
+
+.outputValue {
+  overflow: hidden;
+}
+
+.buttons{
+  height: 380px;
+  display: grid;
+  grid-gap: 2px;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  padding: .5em;
+}
+
+.Button {
+  width: 68px;
+  height: 68px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 3px;
+  border: none;
+  border-radius: 35px;
+  background-color: $mainColor;
+  color: $secondColor;
+  outline: none;
+  @extend %boxshadow;
+  &:hover {
+    @extend %hoverboxshadow;
+  }
+}
+
+.Button.zero {
+  width: 144px;
+  grid-column: 1 / span 2;
+}
+
+.author {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  padding: .5rem 1rem;
+  background-color: $mainColor;
+  border-bottom-left-radius: 5px;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  font-size: 62.5%;
+  font-family: 'Overlock', Arial, Helvetica, sans-serif;
+}
+
+.author a,
+.author a:visited {
+  color: $secondColor;
+  text-decoration: none;
+  display: block;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.author:hover,
+.author:active {
+  @extend %hoverboxshadow;
+}
