@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import Button from './Button'
+import { Button } from '@Component/Button'
 
-export default function Calculator () {
+export const Calculator = () => {
+
+  const contents = ['AC', '±', '%', '÷', '7', '8', '9', 'x', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '=']
   const [value, setValue] = useState('0')
   const [memory, setMemory] = useState(null)
   const [operator, setOperator] = useState(null)
@@ -146,6 +148,7 @@ export default function Calculator () {
     }
     return isNeg ? '-' + parseFloat(val).toLocaleString() + decimal : parseFloat(val).toLocaleString() + decimal
   }
+
   return (
     <div className='calculator'>
       <div className='result'>
@@ -157,25 +160,7 @@ export default function Calculator () {
         </div>
       </div>
       <div className='buttons'>
-        <Button handleButton={handleButton} content='AC' />
-        <Button handleButton={handleButton} content='±' />
-        <Button handleButton={handleButton} content='%' />
-        <Button handleButton={handleButton} content='÷' />
-        <Button handleButton={handleButton} content='7' />
-        <Button handleButton={handleButton} content='8' />
-        <Button handleButton={handleButton} content='9' />
-        <Button handleButton={handleButton} content='x' />
-        <Button handleButton={handleButton} content='4' />
-        <Button handleButton={handleButton} content='5' />
-        <Button handleButton={handleButton} content='6' />
-        <Button handleButton={handleButton} content='-' />
-        <Button handleButton={handleButton} content='1' />
-        <Button handleButton={handleButton} content='2' />
-        <Button handleButton={handleButton} content='3' />
-        <Button handleButton={handleButton} content='+' />
-        <Button handleButton={handleButton} content='0' />
-        <Button handleButton={handleButton} content='.' />
-        <Button handleButton={handleButton} content='=' />
+        {contents.map(content => <Button handleButton={handleButton} content={content} key={content} />)}
       </div>
     </div>
   )
